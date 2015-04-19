@@ -1,27 +1,27 @@
 #ifndef __SONGS_H__
 #define __SONGS_H__
 
-#define NOTE_C  0b00000001
-#define NOTE_D  0b00000010
-#define NOTE_E  0b00000100
-#define NOTE_F  0b00001000
-#define NOTE_G  0b00010000
-#define NOTE_A  0b00100000
-#define NOTE_B  0b01000000
-#define NOTE_C2 0b10000000
+#define NOTE_0  0b00000001
+#define NOTE_1  0b00000010
+#define NOTE_2  0b00000100
+#define NOTE_3  0b00001000
+#define NOTE_4  0b00010000
+#define NOTE_5  0b00100000
+#define NOTE_6  0b01000000
+#define NOTE_7  0b10000000
 #define NOTE_REST 0
 
 int numberOfSongs = 2;
 char *songTitles[] = {"Ode to Joy", "Mary Had a Little Lamb"};
 
-byte ode[] = {NOTE_E, NOTE_E, NOTE_F, NOTE_G, NOTE_G,
-    NOTE_F, NOTE_E, NOTE_D, NOTE_C, NOTE_C, NOTE_D, NOTE_E,
-    NOTE_E, NOTE_REST, NOTE_D, NOTE_D};
-byte mary[] = {NOTE_E, NOTE_D, NOTE_C, NOTE_D, NOTE_E, NOTE_E, NOTE_E,
-    NOTE_REST, NOTE_D, NOTE_D, NOTE_D, NOTE_REST, NOTE_E,
-    NOTE_G, NOTE_G, NOTE_REST, NOTE_E, NOTE_D, NOTE_C, NOTE_D,
-    NOTE_E, NOTE_E, NOTE_E, NOTE_E, NOTE_D, NOTE_D, NOTE_E,
-    NOTE_D, NOTE_C};
+byte ode[] = {NOTE_2, NOTE_2, NOTE_3, NOTE_4, NOTE_4,
+    NOTE_3, NOTE_2, NOTE_1, NOTE_0, NOTE_0, NOTE_1, NOTE_2,
+    NOTE_2, NOTE_REST, NOTE_1, NOTE_1};
+byte mary[] = {NOTE_2, NOTE_1, NOTE_0, NOTE_1, NOTE_2, NOTE_2, NOTE_2,
+    NOTE_REST, NOTE_1, NOTE_1, NOTE_1, NOTE_REST, NOTE_2,
+    NOTE_4, NOTE_4, NOTE_REST, NOTE_2, NOTE_1, NOTE_0, NOTE_1,
+    NOTE_2, NOTE_2, NOTE_2, NOTE_2, NOTE_1, NOTE_1, NOTE_2,
+    NOTE_1, NOTE_0};
 
 byte *songs[] = {ode, mary};
     

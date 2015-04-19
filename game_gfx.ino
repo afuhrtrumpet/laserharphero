@@ -7,14 +7,13 @@
 #define BLACK 1
 #define WHITE 0
 
-int time = 0;
 int score = 0;
 
 Adafruit_PCD8544 display = Adafruit_PCD8544(52, 51, 5, 7, 3);
 
 void initDisplay() {
   display.begin();
-  display.setContrast(45);
+  display.setContrast(65);
   display.clearDisplay();
 }
 

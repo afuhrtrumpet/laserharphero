@@ -26,6 +26,7 @@ int scaleType = 0;
 
 int mode = 0;
 int selectedSong = 0;
+int time = 0;
 
 boolean noteValues[] = {false, false, false, false, false, false, false, false};
 
@@ -58,6 +59,7 @@ void loop() {
   if (millis() - 15 > lastUpdate) {
     showFrame(songs[selectedSong], songLengths[selectedSong]);
     lastUpdate = millis();
+    if(time % 14 == 0 && mode == GAME) playMetronome();
   }
   scanNunchuck();
 }

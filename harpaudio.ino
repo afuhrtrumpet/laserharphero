@@ -7,6 +7,8 @@ void initializeMIDI(int instrument) {
   for (int i = 0; i <= 8; i++) {
     talkMIDI(0xC0+i, instrument, 0);
   }
+  talkMIDI(0xB0, 0, 0x78);
+  talkMIDI(0xC0, 28, 0);
 }
 
 void scanNotes() {
@@ -28,6 +30,10 @@ void scanNotes() {
       }
     }
   }
+}
+
+void playMetronome() {
+  noteOn(0, 60, 90);
 }
 
 //Send a MIDI note-on message.  Like pressing a piano key
