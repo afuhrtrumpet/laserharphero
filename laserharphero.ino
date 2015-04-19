@@ -26,10 +26,12 @@ void setup() {
   delay(100);
   digitalWrite(resetMIDI, HIGH);
   delay(100);
-  talkMIDI(0xB0, 0x07, 127);
   
+  talkMIDI(0xB0, 0x07, 127);
   talkMIDI(0xB0, 0, 0x00);
-  talkMIDI(0xC0, 47, 0);
+  for (int i = 0; i <= 8; i++) {
+    talkMIDI(0xC0+i, 66, 0);
+  }
 }
 
 void loop() {
