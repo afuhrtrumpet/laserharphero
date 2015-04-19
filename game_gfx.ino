@@ -7,9 +7,24 @@
 #define BLACK 1
 #define WHITE 0
 
+int time = 0;
+int score = 0;
+
 Adafruit_PCD8544 display = Adafruit_PCD8544(52, 51, 5, 7, 3);
 
-int time;
+void initDisplay() {
+  display.begin();
+  display.setContrast(60);
+  display.clearDisplay();
+}
+
+void showFrame(byte *notes, int numNotes) {
+  display.clearDisplay();
+  showNotes(notes, numNotes, time);
+  showBar();
+  display.display();
+  time++;
+}
 
 void showNotes(byte *notes, int numNotes, int time) {
    int next   = (time / (VSPACE)) % (numNotes + 6);
@@ -20,6 +35,14 @@ void showNotes(byte *notes, int numNotes, int time) {
      while(cur != 0) {
        if(cur & 1 == 1) {
          display.fillRect(HEIGHT - offset, WIDTH - HSPACE * num - 5, 4, 4, BLACK);
+         if (HEIGHT - offset >= 2 && HEIGHT - offset <= 5) {
+           if (noteValues[num] && time - 10 > lastTimeScored[num]) {
+             score++;
+             lastTimeScored[num] = time;
+             Serial.print("Score: ");
+             Serial.println(score);
+           }
+         }
        }
        cur >>= 1;
        num++;
