@@ -24,12 +24,16 @@ void showFrame(byte *notes, int numNotes) {
   showNotes(notes, numNotes, time);
   showBar();
   showScore();
+  showBursts();
   display.display();
   time++;
 }
 
 void showNotes(byte *notes, int numNotes, int time) {
    int next   = (time / (VSPACE)) % (numNotes + 6);
+   if(next == 2) {
+     score = 0;
+   }
    int offset = time % (VSPACE);
    while(next >= 0 && offset < (HEIGHT)) {
      byte cur = next < numNotes ? notes[next] : 0;
@@ -66,5 +70,23 @@ void showScore() {
   display.print(score);
   display.setCursor(65, 0);
   display.print(scale[0]);
+  display.setCursor(30, 0);
+  switch (scaleType) {
+    case 0:
+      display.print("Major"); break;
+    case 1:
+      display.print("Minor"); break;
+    case 2:
+      display.print("MajorP"); break;
+    case 3:
+      display.print("Blues"); break;
+  }
 }
 
+void showBursts() {
+  for(int i = 0; i < 8; i++) {
+    if(noteValues[i]) {
+      display.drawRect(HEIGHT - 6, HSPACE * i, 6, 6, BLACK);
+    }
+  }
+}
