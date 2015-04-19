@@ -23,7 +23,9 @@ void scanNunchuck() {
       scaleType = (scaleType + 1) % SCALE_TYPES;
       changeScale(scale[0]);
     } else if (mode == SONG_SELECT) {
-      selectedSong = (selectedSong + 1) % numberOfSongs;
+      selectedSong = selectedSong - 1;
+      if(selectedSong < 0) selectedSong = NUM_SONGS - 1;
+      
     }
   } else if (nunchuck_joyy() < JOYSTICK_LOW && lastJoystickY >= JOYSTICK_LOW) {
     if (mode == FREE) {
@@ -33,7 +35,7 @@ void scanNunchuck() {
       }
       changeScale(scale[0]);
     } else if (mode == SONG_SELECT) {
-      selectedSong = abs((selectedSong - 1) % numberOfSongs);
+      selectedSong = (selectedSong + 1) % NUM_SONGS;
     }
   }
   if (nunchuck_cbutton() && !lastC && millis() - DEBOUNCE_INTERVAL > timeSinceLastButtonPress) {

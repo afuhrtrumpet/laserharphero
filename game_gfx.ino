@@ -115,7 +115,7 @@ void showSongSelection() {
   display.setTextColor(BLACK);
   display.setTextSize(1);
   display.setCursor(0,0);
-  for (int i = 0; i < numberOfSongs; i++) {
+  for (int i = 0; i < NUM_SONGS; i++) {
     if (selectedSong == i) {
       display.print("> ");
     }
