@@ -7,6 +7,7 @@
 #include <nunchuck_funcs.h>
 
 #define LIGHT_THRESHOLD 500
+#define SCALE_TYPES 4
 
 SoftwareSerial midiSerial(2,3);
 byte resetMIDI = 4;
@@ -15,6 +16,7 @@ int harpPins[] = {A0, A1, A2, A3, A4, A5, A8, A9};
 int scale[] = {60, 62, 64, 65, 67, 69, 71, 72};
 int speakerPin = 12;
 int instrument = 46;
+int scaleType = 0;
 
 boolean noteValues[] = {false, false, false, false, false, false, false, false};
 
@@ -50,17 +52,51 @@ void loop() {
     showFrame(notes, noteLength);
     lastUpdate = millis();
   }
+  scanNunchuck();
 }
 
 void changeScale(int newStart) {
-  scale[0] = newStart;
-  scale[1] = newStart + 2;
-  scale[2] = newStart + 4;
-  scale[3] = newStart + 5;
-  scale[4] = newStart + 7;
-  scale[5] = newStart + 9;
-  scale[6] = newStart + 11;
-  scale[7] = newStart + 12;
+  switch (scaleType) {
+    case 0:
+      scale[0] = newStart;
+      scale[1] = newStart + 2;
+      scale[2] = newStart + 4;
+      scale[3] = newStart + 5;
+      scale[4] = newStart + 7;
+      scale[5] = newStart + 9;
+      scale[6] = newStart + 11;
+      scale[7] = newStart + 12;
+      break;
+     case 1:
+      scale[0] = newStart;
+      scale[1] = newStart + 2;
+      scale[2] = newStart + 3;
+      scale[3] = newStart + 5;
+      scale[4] = newStart + 7;
+      scale[5] = newStart + 8;
+      scale[6] = newStart + 10;
+      scale[7] = newStart + 12;
+      break;
+     case 2:
+      scale[0] = newStart;
+      scale[1] = newStart + 2;
+      scale[2] = newStart + 4;
+      scale[3] = newStart + 7;
+      scale[4] = newStart + 9;
+      scale[5] = newStart + 12;
+      scale[6] = newStart + 14;
+      scale[7] = newStart + 16;
+      break;
+     case 3:
+      scale[0] = newStart;
+      scale[1] = newStart + 3;
+      scale[2] = newStart + 5;
+      scale[3] = newStart + 6;
+      scale[4] = newStart + 7;
+      scale[5] = newStart + 10;
+      scale[6] = newStart + 12;
+      scale[7] = newStart + 15;
+  }
 }
 
 void timerIsr() {
