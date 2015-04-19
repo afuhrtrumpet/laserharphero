@@ -3,6 +3,8 @@
 #include <SPI.h>
 #include <Adafruit_GFX.h>
 #include <Adafruit_PCD8544.h>
+#include <Wire.h>
+#include <nunchuck_funcs.h>
 
 #define LIGHT_THRESHOLD 500
 
@@ -10,6 +12,7 @@ SoftwareSerial midiSerial(2,3);
 byte resetMIDI = 4;
 int ledPin = 13;
 int harpPins[] = {A0, A1, A2, A3, A4, A5, A8, A9};
+int scale[] = {60, 62, 64, 65, 67, 69, 71, 72};
 int speakerPin = 12;
 int instrument = 46;
 
@@ -34,6 +37,9 @@ void setup() {
   digitalWrite(resetMIDI, HIGH);
   delay(100);
   
+  nunchuck_setpowerpins();
+  nunchuck_init();
+  
   initializeMIDI(instrument);
   initDisplay();
 }
@@ -44,6 +50,17 @@ void loop() {
     showFrame(notes, noteLength);
     lastUpdate = millis();
   }
+}
+
+void changeScale(int newStart) {
+  scale[0] = newStart;
+  scale[1] = newStart + 2;
+  scale[2] = newStart + 4;
+  scale[3] = newStart + 5;
+  scale[4] = newStart + 7;
+  scale[5] = newStart + 9;
+  scale[6] = newStart + 11;
+  scale[7] = newStart + 12;
 }
 
 void timerIsr() {

@@ -1,6 +1,5 @@
   #define TONE_LENGTH 200
 
-int scale[] = {60, 62, 64, 65, 67, 69, 71, 72};
 
 void initializeMIDI(int instrument) {
   talkMIDI(0xB0, 0x07, 127);

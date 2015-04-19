@@ -64,5 +64,7 @@ void showScore() {
   display.setTextColor(BLACK);
   display.setCursor(0, 0);
   display.print(score);
+  display.setCursor(65, 0);
+  display.print(scale[0]);
 }
 
