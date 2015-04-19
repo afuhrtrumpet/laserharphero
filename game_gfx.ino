@@ -66,5 +66,16 @@ void showScore() {
   display.print(score);
   display.setCursor(65, 0);
   display.print(scale[0]);
+  display.setCursor(30, 0);
+  switch (scaleType) {
+    case 0:
+      display.print("Major"); break;
+    case 1:
+      display.print("Minor"); break;
+    case 2:
+      display.print("MajorP"); break;
+    case 3:
+      display.print("Blues"); break;
+  }
 }
 
