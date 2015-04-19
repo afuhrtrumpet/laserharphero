@@ -30,7 +30,7 @@ void showFrame(byte *notes, int numNotes) {
       time++;
     }
     showBar();
-		showBursts();
+    showBursts();
     showScale();
   }
   display.display();
@@ -79,12 +79,15 @@ void showScore() {
   display.print(score);
 }
 
+char *scales[] = {"A", "Bb", "B", "C", "Db", "D", "Eb", "E", "F", "Gb", "G", "Ab"};
+
 void showScale() {
   display.setRotation(90);
   display.setTextSize(1);
   display.setTextColor(BLACK);
   display.setCursor(65, 0);
-  display.print(scale[0]);
+  display.print(scales[(scale[0] - 2) % 11]);
+  display.print((scale[0] - 14)/ 11);
   display.setCursor(30, 0);
   switch (scaleType) {
     case 0:
