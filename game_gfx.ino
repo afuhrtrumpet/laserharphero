@@ -14,7 +14,7 @@ Adafruit_PCD8544 display = Adafruit_PCD8544(52, 51, 5, 7, 3);
 
 void initDisplay() {
   display.begin();
-  display.setContrast(60);
+  display.setContrast(45);
   display.clearDisplay();
 }
 
@@ -23,6 +23,8 @@ void showFrame(byte *notes, int numNotes) {
   display.setRotation(0);
   if (mode == MAIN_MENU) {
     showMenu();
+  } else if (mode == SONG_SELECT) {
+    showSongSelection();
   } else {
     if (mode == GAME) {
       showNotes(notes, numNotes, time);
@@ -107,6 +109,19 @@ void showMenu() {
   display.setTextColor(BLACK);
   display.setCursor(0, 0);
   display.print("C = Free Mode\nZ = Game Mode");
+}
+
+void showSongSelection() {
+  display.setRotation(90);
+  display.setTextColor(BLACK);
+  display.setTextSize(1);
+  display.setCursor(0,0);
+  for (int i = 0; i < numberOfSongs; i++) {
+    if (selectedSong == i) {
+      display.print("> ");
+    }
+    display.println(songTitles[i]);
+  }
 }
 
 void showBursts() {

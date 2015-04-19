@@ -11,6 +11,7 @@
 #define NOTE_C2 0b10000000
 #define NOTE_REST 0
 
+int numberOfSongs = 2;
 char *songTitles[] = {"Ode to Joy", "Mary Had a Little Lamb"};
 
 byte ode[] = {NOTE_E, NOTE_E, NOTE_F, NOTE_G, NOTE_G,

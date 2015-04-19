@@ -13,6 +13,7 @@
 #define MAIN_MENU 0
 #define FREE 1
 #define GAME 2
+#define SONG_SELECT 3
 
 SoftwareSerial midiSerial(2,3);
 byte resetMIDI = 4;
@@ -24,6 +25,7 @@ int instrument = 46;
 int scaleType = 0;
 
 int mode = 0;
+int selectedSong = 0;
 
 boolean noteValues[] = {false, false, false, false, false, false, false, false};
 
@@ -53,8 +55,8 @@ void loop() {
   if (mode != MAIN_MENU) {
     scanNotes();
   }
-  if (millis() - 25 > lastUpdate) {
-    showFrame(songs[1], songLengths[1]);
+  if (millis() - 15 > lastUpdate) {
+    showFrame(songs[selectedSong], songLengths[selectedSong]);
     lastUpdate = millis();
   }
   scanNunchuck();
