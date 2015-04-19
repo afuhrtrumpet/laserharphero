@@ -1,3 +1,7 @@
+#include <SPI.h>
+#include <Adafruit_GFX.h>
+#include <Adafruit_PCD8544.h>
+
 #include <TimerOne.h>
 #include <SoftwareSerial.h>
 
