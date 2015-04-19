@@ -110,6 +110,8 @@ void showMenu() {
 }
 
 void showBursts() {
+  display.setRotation(90);
+  display.setCursor(0, 0);
   for(int i = 0; i < 8; i++) {
     if(noteValues[i]) {
       display.drawRect(HEIGHT - 6, HSPACE * i, 6, 6, BLACK);
