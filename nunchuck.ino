@@ -41,6 +41,7 @@ void scanNunchuck() {
       mode = FREE;
     } else if (mode == SONG_SELECT) {
       mode = GAME;
+      time = 0;
     }
     timeSinceLastButtonPress = millis();
   }
