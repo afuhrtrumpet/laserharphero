@@ -1,4 +1,3 @@
-#include <TimerOne.h>
 #include <SoftwareSerial.h>
 #include <SPI.h>
 #include <Adafruit_GFX.h>
@@ -35,8 +34,6 @@ unsigned long lastUpdate = 0;
 void setup() {
   midiSerial.begin(31250);
   pinMode(speakerPin, OUTPUT);
-  Timer1.initialize(50000);
-  Timer1.attachInterrupt(timerIsr);
   Serial.begin(9600);
   
   pinMode(resetMIDI, OUTPUT);
