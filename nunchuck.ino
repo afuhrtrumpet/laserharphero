@@ -44,6 +44,7 @@ void scanNunchuck() {
     } else if (mode == SONG_SELECT) {
       mode = GAME;
       time = 0;
+      spacing = DEFAULT_SPACE / songTimeSigs[selectedSong];
     }
     timeSinceLastButtonPress = millis();
   }

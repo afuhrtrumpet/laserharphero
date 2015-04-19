@@ -7,6 +7,8 @@
 
 #include "songs.h"
 
+#define DEFAULT_SPACE 15
+
 #define LIGHT_THRESHOLD 500
 #define SCALE_TYPES 4
 
@@ -27,6 +29,7 @@ int scaleType = 0;
 int mode = 0;
 int selectedSong = 0;
 int time = 0;
+int spacing = DEFAULT_SPACE;
 
 boolean noteValues[] = {false, false, false, false, false, false, false, false};
 
@@ -56,10 +59,10 @@ void loop() {
   if (mode != MAIN_MENU) {
     scanNotes();
   }
-  if (millis() - 15 > lastUpdate) {
+  if (millis() - spacing > lastUpdate) {
     showFrame(songs[selectedSong], songLengths[selectedSong]);
     lastUpdate = millis();
-    if(time % 14 == 0 && mode == GAME) playMetronome();
+    if(time % (14 * songTimeSigs[selectedSong]) == 0 && mode == GAME) playMetronome();
   }
   scanNunchuck();
 }

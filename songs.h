@@ -26,12 +26,16 @@ byte mary[] = {NOTE_2, NOTE_1, NOTE_0, NOTE_1, NOTE_2, NOTE_2,
     NOTE_2, NOTE_2, NOTE_2, NOTE_2, NOTE_1, NOTE_1, NOTE_2,
     NOTE_1, NOTE_0};
     
-byte buns[] = {NOTE_2, NOTE_1, NOTE_0, NOTE_REST, NOTE_2, NOTE_1,
-    NOTE_0, NOTE_REST, NOTE_0, NOTE_0, NOTE_0, NOTE_0, NOTE_1,
-    NOTE_1, NOTE_1, NOTE_1, NOTE_2, NOTE_1, NOTE_0};
+byte buns[] = {NOTE_2, NOTE_REST, NOTE_1, NOTE_REST, NOTE_0,
+    NOTE_REST, NOTE_REST, NOTE_REST, NOTE_2, NOTE_REST, NOTE_1,
+    NOTE_REST, NOTE_0, NOTE_REST, NOTE_REST, NOTE_REST, NOTE_0,
+    NOTE_0, NOTE_0, NOTE_0, NOTE_1, NOTE_1, NOTE_1, NOTE_1, NOTE_2,
+    NOTE_REST, NOTE_1, NOTE_REST, NOTE_0, NOTE_REST};
 
 byte *songs[] = {ode, mary, buns};
     
-int songLengths[] = {32, 29, 19};
+int songLengths[] = {32, 29, 30};
+
+byte songTimeSigs[] = {1, 1, 2};
 
 #endif
