@@ -5,6 +5,8 @@
 #include <Wire.h>
 #include <nunchuck_funcs.h>
 
+#include "songs.h"
+
 #define LIGHT_THRESHOLD 500
 #define SCALE_TYPES 4
 
@@ -25,9 +27,7 @@ int mode = 0;
 
 boolean noteValues[] = {false, false, false, false, false, false, false, false};
 
-byte notes[] = {0b00010000, 0b10000001, 0b10010010};
 int lastTimeScored[] = {0, 0, 0, 0, 0, 0, 0, 0};
-int noteLength = 3;
 
 unsigned long lastUpdate = 0;
 
@@ -54,7 +54,7 @@ void loop() {
     scanNotes();
   }
   if (millis() - 25 > lastUpdate) {
-    showFrame(notes, noteLength);
+    showFrame(songs[1], songLengths[1]);
     lastUpdate = millis();
   }
   scanNunchuck();
