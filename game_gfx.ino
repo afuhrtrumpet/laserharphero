@@ -20,8 +20,10 @@ void initDisplay() {
 
 void showFrame(byte *notes, int numNotes) {
   display.clearDisplay();
+  display.setRotation(0);
   showNotes(notes, numNotes, time);
   showBar();
+  showScore();
   display.display();
   time++;
 }
@@ -54,5 +56,13 @@ void showNotes(byte *notes, int numNotes, int time) {
 
 void showBar() {
   display.drawLine(2, 0, 2, HEIGHT, BLACK);
+}
+
+void showScore() {
+  display.setRotation(90);
+  display.setTextSize(1);
+  display.setTextColor(BLACK);
+  display.setCursor(0, 0);
+  display.print(score);
 }
 
