@@ -30,6 +30,7 @@ void showFrame(byte *notes, int numNotes) {
       time++;
     }
     showBar();
+		showBursts();
     showScale();
   }
   display.display();
@@ -38,6 +39,9 @@ void showFrame(byte *notes, int numNotes) {
 void showNotes(byte *notes, int numNotes, int time) {
    display.setRotation(0);
    int next   = (time / (VSPACE)) % (numNotes + 6);
+   if(next == 2) {
+     score = 0;
+   }
    int offset = time % (VSPACE);
    while(next >= 0 && offset < (HEIGHT)) {
      byte cur = next < numNotes ? notes[next] : 0;
@@ -102,3 +106,10 @@ void showMenu() {
   display.print("C = Free Mode\nZ = Game Mode");
 }
 
+void showBursts() {
+  for(int i = 0; i < 8; i++) {
+    if(noteValues[i]) {
+      display.drawRect(HEIGHT - 6, HSPACE * i, 6, 6, BLACK);
+    }
+  }
+}
