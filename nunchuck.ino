@@ -20,6 +20,16 @@ void scanNunchuck() {
     scaleType = (scaleType + 1) % SCALE_TYPES;
     changeScale(scale[0]);
   }
+  if (nunchuck_cbutton() && !lastC) {
+    if (mode == MAIN_MENU) {
+      mode = FREE;
+    }
+  }
+  if (nunchuck_zbutton() && !lastZ) {
+    if (mode == MAIN_MENU) {
+      mode = GAME;
+    }
+  }
   lastJoystickX = nunchuck_joyx();
   lastJoystickY = nunchuck_joyy();
   lastC = nunchuck_cbutton();

@@ -21,14 +21,22 @@ void initDisplay() {
 void showFrame(byte *notes, int numNotes) {
   display.clearDisplay();
   display.setRotation(0);
-  showNotes(notes, numNotes, time);
-  showBar();
-  showScore();
+  if (mode == MAIN_MENU) {
+    showMenu();
+  } else {
+    if (mode == GAME) {
+      showNotes(notes, numNotes, time);
+      showScore();
+      time++;
+    }
+    showBar();
+    showScale();
+  }
   display.display();
-  time++;
 }
 
 void showNotes(byte *notes, int numNotes, int time) {
+   display.setRotation(0);
    int next   = (time / (VSPACE)) % (numNotes + 6);
    int offset = time % (VSPACE);
    while(next >= 0 && offset < (HEIGHT)) {
@@ -55,6 +63,7 @@ void showNotes(byte *notes, int numNotes, int time) {
 }
 
 void showBar() {
+  display.setRotation(0);
   display.drawLine(2, 0, 2, HEIGHT, BLACK);
 }
 
@@ -64,6 +73,12 @@ void showScore() {
   display.setTextColor(BLACK);
   display.setCursor(0, 0);
   display.print(score);
+}
+
+void showScale() {
+  display.setRotation(90);
+  display.setTextSize(1);
+  display.setTextColor(BLACK);
   display.setCursor(65, 0);
   display.print(scale[0]);
   display.setCursor(30, 0);
@@ -77,5 +92,13 @@ void showScore() {
     case 3:
       display.print("Blues"); break;
   }
+}
+
+void showMenu() {
+  display.setRotation(90);
+  display.setTextSize(1.5);
+  display.setTextColor(BLACK);
+  display.setCursor(0, 0);
+  display.print("C = Free Mode\nZ = Game Mode");
 }
 

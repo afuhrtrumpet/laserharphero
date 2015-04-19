@@ -9,6 +9,10 @@
 #define LIGHT_THRESHOLD 500
 #define SCALE_TYPES 4
 
+#define MAIN_MENU 0
+#define FREE 1
+#define GAME 2
+
 SoftwareSerial midiSerial(2,3);
 byte resetMIDI = 4;
 int ledPin = 13;
@@ -17,6 +21,8 @@ int scale[] = {60, 62, 64, 65, 67, 69, 71, 72};
 int speakerPin = 12;
 int instrument = 46;
 int scaleType = 0;
+
+int mode = 0;
 
 boolean noteValues[] = {false, false, false, false, false, false, false, false};
 
@@ -47,7 +53,9 @@ void setup() {
 }
 
 void loop() {
-  scanNotes();
+  if (mode != MAIN_MENU) {
+    scanNotes();
+  }
   if (millis() - 25 > lastUpdate) {
     showFrame(notes, noteLength);
     lastUpdate = millis();
